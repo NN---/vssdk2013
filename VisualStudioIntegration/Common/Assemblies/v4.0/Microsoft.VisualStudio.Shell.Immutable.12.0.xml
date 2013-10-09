@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.VisualStudio.Shell.Immutable.12.0</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.VisualStudio.Shell.IAsyncAttachedCollectionSource">
+      <summary>Represents an <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" /> object that can report on whether or not the <see cref="P:Microsoft.VisualStudio.Shell.IAttachedCollectionSource.HasItems" /> property is currently being initialized, and which raises an <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> event when the IsInitializingHasItems value changes.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IAsyncAttachedCollectionSource.IsUpdatingHasItems">
+      <summary>Determines whether the <see cref="P:Microsoft.VisualStudio.Shell.IAttachedCollectionSource.HasItems" /> property is currently being updated.  Because updating HasItems may be an asynchronous operation, consumers of the <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" /> may want to wait for this property to become false before deciding that there are no items.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.IAttachedCollectionService">
+      <summary>Represents a service that can get attached collections for an item based on a known relationship, and that can enumerate the relationships that are supported for an item.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.IAttachedCollectionService.GetOrCreateCollectionSource(System.Object,System.String)">
+      <summary>Gets or creates an <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" /> instance that represents an attached collection for the given relationship on the given item.</summary>
+      <returns>Returns <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" />.</returns>
+      <param name="item">The item.</param>
+      <param name="relationshipName">The name of the relationship.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.IAttachedCollectionService.GetRelationship(System.Object,System.String)">
+      <summary>Given a name for a relationship, returns an <see cref="T:Microsoft.VisualStudio.IAttachedRelationship" /> containing a localizable description of the relationship.</summary>
+      <returns>Returns an <see cref="T:Microsoft.VisualStudio.Shell.IAttachedRelationship" /> corresponding to the relationship, or null if the relationship is unknown.</returns>
+      <param name="item">The item.</param>
+      <param name="relationshipName">The name of the relationship.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.IAttachedCollectionService.GetRelationships(System.Object)">
+      <summary>Gets the set of relationships supported for a given item.</summary>
+      <returns>Returns <see cref="T:System.Collections.Generic.IEnumerable`1" /> of supported relationships.</returns>
+      <param name="item">The item.</param>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource">
+      <summary>Represents an object instance that can return a collection of items, and that knows whether or not any items exist without realizing the items themselves.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IAttachedCollectionSource.HasItems">
+      <summary>Determines whether this IAttachedCollectionSource has any items. </summary>
+      <returns>Returns true if this IAttachedCollectionSource has any items, otherwise false. Accessing HasItems does not necessarily create the items themselves.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IAttachedCollectionSource.Items">
+      <summary>Gets (and creates, if necessary) the collection of items associatedwith this IAttachedCollectionSource.</summary>
+      <returns>Returns <see cref="T:System.Collections.IEnumerable" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IAttachedCollectionSource.SourceItem">
+      <summary>Gets the object used to create this IAttachedCollectionSource.</summary>
+      <returns>Returns <see cref="T:System.Object" />.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSourceProvider">
+      <summary>Represents a service that can enumerate the relationships that exist for an object the service understands, and which can create attached collections for a relationship and object the service understands.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.IAttachedCollectionSourceProvider.CreateCollectionSource(System.Object,System.String)">
+      <summary>For a given object and relationship, create an <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" />. This attached collection should contain items for the given relationship as they relate to the source item.</summary>
+      <returns>Returns a new <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" />, or null if this provider does not support the creation of collections for this object.</returns>
+      <param name="item">The source item for which the collection should be created.</param>
+      <param name="relationshipName">The name of the relationship for which a collection should be created.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.IAttachedCollectionSourceProvider.GetRelationships(System.Object)">
+      <summary>For a given object, enumerate the possible relationship collections this provider knows about.</summary>
+      <returns>Returns an <see cref="T:System.Collections.Generic.IEnumerable`1" />of relationships.</returns>
+      <param name="item">The item.</param>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.IAttachedRelationship">
+      <summary>Contains metadata about an attached relationship, used by the <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionService" /> to describe relationships between objects.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IAttachedRelationship.DisplayName">
+      <summary>Gets a localizable description of this relationship.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IAttachedRelationship.Name">
+      <summary>Gets the non-localized uniquely-identifying name of this relationship.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.ICacheableAttachedCollectionSource">
+      <summary>Represents an <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" /> that can potentially be cached. Cached sources do not need to be re-created each time they're requested.</summary>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.ICacheableAttachedCollectionSource.CanCache">
+      <summary>Gets whether or not the items from this <see cref="T:Microsoft.VisualStudio.Shell.IAttachedCollectionSource" /> can be cached. IAttachedCollectionSource instances that do not support observable changes to their items (via <see cref="T:System.ComponentModel.INotifyCollectionChanged" />) but which do change over time should not be cached, since caching the IAttachedCollectionSource will permanently cache a stale collection.</summary>
+      <returns>Returns <see cref="T:System.Boolean" />.</returns>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.IVsManagedSettingsChangeEventSource">
+      <summary>Provides an event for changed settings.</summary>
+    </member>
+    <member name="E:Microsoft.VisualStudio.Shell.IVsManagedSettingsChangeEventSource.SettingChanged">
+      <summary>Occurs when settings have changed.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.IVsTaskJoinableTask">
+      <summary>An interface that allows attaching a single JoinableTask to an IVsTask instance.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.IVsTaskJoinableTask.AssociateJoinableTask(System.Object)">
+      <summary>Indicates that this IVsTask instance acts as a wrapper around the specified JoinableTask.</summary>
+      <param name="joinableTask">The JoinableTask.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.IVsTaskJoinableTask.CancellationToken"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Services.BulletinHandler"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Services.IVsPublishSubscribeService"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Services.IVsPublishSubscribeService.Publish(System.Object)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Services.IVsPublishSubscribeService.Publish(System.Type,System.Object)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Services.IVsPublishSubscribeService.Subscribe(System.Type,Microsoft.VisualStudio.Shell.Services.BulletinHandler)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Services.IVsPublishSubscribeService.Unsubscribe(System.Type,Microsoft.VisualStudio.Shell.Services.BulletinHandler)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Services.SVsPublishSubscribeService"></member>
+  </members>
+</doc>

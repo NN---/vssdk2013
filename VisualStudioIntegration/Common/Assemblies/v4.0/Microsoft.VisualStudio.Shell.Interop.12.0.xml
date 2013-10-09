@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>Microsoft.VisualStudio.Shell.Interop.12.0</name>
+  </assembly>
+  <members>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_FIRST_SOLUTION_LOAD">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_NO_PROMPT">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_NONE">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_PROJECT_LOAD">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_PROJECT_RELOAD">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_PROJECT_RETARGET">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_REQUIRED_ONLY">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_CHECK_OPTIONS.RCO_SOLUTION_RETARGET">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__RETARGET_OPTIONS"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_OPTIONS.RO_BACKUP">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_OPTIONS.RO_NONE">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__RETARGET_TASK_PRIORITY"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_TASK_PRIORITY.RTP_Critical">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_TASK_PRIORITY.RTP_High">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_TASK_PRIORITY.RTP_Low">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__RETARGET_TASK_PRIORITY.RTP_Normal">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSArrangeWindowFlags"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSArrangeWindowFlags.AWF_Height">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSArrangeWindowFlags.AWF_Left">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSArrangeWindowFlags.AWF_Top">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSArrangeWindowFlags.AWF_Width">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSDBGLAUNCHFLAGS120"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSDBGLAUNCHFLAGS120.DBGLAUNCH_ALLOW_EVENTS_AFTER_STOPPED">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSFPROPID6"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSFPROPID6.VSFPROPID_PendingInitialization">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSFPROPID6.VSFPROPID6_FIRST">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_ConnectedServicesPersistence">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_FIRST6">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_ProjectRetargeting">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_ShowAllProjectFilesInProjectView">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSHPROPID6.VSHPROPID_Subcaption">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSIDOFLAGS2"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSIDOFLAGS2.IDO_IncludeUninitializedFrames">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSNEWDOCUMENTSTATE2"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSNEWDOCUMENTSTATE2.NDS_Reserved">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSNEWDOCUMENTSTATE2.NDS_TryProvisional">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSPROPID6"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPROPID6.VSPROPID_FIRST6">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPROPID6.VSPROPID_IsSolutionInEndRetargetingBatch">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_DoBackup">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_DoNotAdvertiseRetarget">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_MigrationNextStepGuidanceLink">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectRetargetingDescription">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectRetargetingGuidanceLink">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectRetargetingTaskPriority">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectRetargetingTitle">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectUnloadUntilRetargetedDescription">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectUnloadUntilRetargetedTaskPriority">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_ProjectUnloadUntilRetargetedTitle">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_RetargetProjectCommandTitle">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_UnloadInfoLine">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSPTDPROPID.VSPTDPROPID_UnloadTitle">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3.RDTA_DocumentInitialized">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSRDTATTRIB3.RDTA_HierarchyInitialized">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSSEARCHNAVIGATIONKEY2"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSSEARCHNAVIGATIONKEY2.SNK_ESCAPE">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__VSTASKCREATIONOPTIONS2"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__VSTASKCREATIONOPTIONS2.VSTCRO_CancelWithParent">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.__XMLMEMBERDATA_DEPRECATION_TYPE"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__XMLMEMBERDATA_DEPRECATION_TYPE.XMLMEMBERDATA_DEPRECATION_TYPE_DEPRECATE">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.__XMLMEMBERDATA_DEPRECATION_TYPE.XMLMEMBERDATA_DEPRECATION_TYPE_REMOVE">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop._VSProjectUnloadStatus2"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop._VSProjectUnloadStatus2.UNLOADSTATUS_NeedRetarget">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.AppToastCapability"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.AppToastCapability.ATC_No">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.AppToastCapability.ATC_Unset">
+      <summary />
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.AppToastCapability.ATC_Yes">
+      <summary />
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDesignerService2">
+      <summary>Provides programmatic access to a project's .appxmanifext file. You can use it to open a DocData object provided by the Manifest Designer, ensure that it is registered in the running document table (RDT), and return a document handle object that implements two interfaces: IVsDocumentLockHolder and IVsInvisibleEditor. This forces any existing document window to close, and causes the returned document handle to hold a RDT_EditLock. When you need to keep the document handle for longer periods of time, cast it to IVsInvisibleEditor and use GetDocData to get a pointer to a fresh object model. When finished with the document handle, always call IVsDocumentLockHolder.CloseDocumentHolder(), usually passing (uint)__FRAMECLOSE.FRAMECLOSE_SaveIfDirty as the save option.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDesignerService2.OpenAppxManifestDesigner(Microsoft.VisualStudio.Shell.Interop.IVsDocumentLockHolder,Microsoft.VisualStudio.Shell.Interop.AppxManifestDesignerTab)">
+      <summary>Opens the .appxmanifest designer.</summary>
+      <returns>The HRESULT.</returns>
+      <param name="documentHandle">The document handle.</param>
+      <param name="tab">The designer tab.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDesignerService2.OpenAppxManifestDocument(System.Object,Microsoft.VisualStudio.Shell.Interop.IVsDocumentLockHolder@,Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument@)">
+      <summary>Opens the .appxmanifest file in the specified project.</summary>
+      <returns>The HRESULT.</returns>
+      <param name="project">A pointer to the project. The object can be either an IVsHierarchy or a DTE.</param>
+      <param name="documentHandle">The document lock.</param>
+      <param name="appxManifestDocument">The document.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDesignerService2.OpenAppxManifestDocument(System.Object,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsDocumentLockHolder@,Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2@)">
+      <summary>Opens the .appxmanifest file in the specified file.</summary>
+      <returns>The HRESULT.</returns>
+      <param name="Project">The project.</param>
+      <param name="forceSaveAndClose">true if an open copy of the file should be saved, otherwise false.</param>
+      <param name="documentHandle">The document lock.</param>
+      <param name="appxManifestDocument">The document.</param>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2">
+      <summary>Provides an object model for the app manifest of the current project. It is implemented by the DocData object of the app manifest designer.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.AddCapability(System.String)">
+      <summary>Adds the specified capability to the manifest if it is not already present.</summary>
+      <param name="capabilityId">[in] The capability to add to the manifest.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.ApplicationStartPage">
+      <summary>Gets or sets the application start page.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.ApplicationToastCapable">
+      <summary>Gets or sets the <see cref="T:Microsoft.VisualStudio.Shell.Interop.AppToastCapability" />. </summary>
+      <returns>Returns <see cref="T:Microsoft.VisualStudio.Shell.Interop.AppToastCapability" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.Capabilities">
+      <summary>Gets a list of all capabilities currently declared in the manifest, which may include both standard capabilities and device capabilities.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.GetFileOpenPickerExtension(System.String@,System.String@,System.String@,System.String@,Microsoft.VisualStudio.Shell.Interop.IAppxFileOpenPickerExtension@)">
+      <summary>Gets the File Open Picker extension.</summary>
+      <returns>true if there is a File Open Picker extension associated with the manifest.</returns>
+      <param name="executable">[out] The executable field of the app manifest.</param>
+      <param name="entryPoint">[out] The entryPoint field of the app manifest.</param>
+      <param name="runtimeType">[out] The runtimeType field of the app manifest.</param>
+      <param name="startPage">[out] The startPage field of the app manifest.</param>
+      <param name="fileOpenPickerExtensionData">[out] An <see cref="T:Microsoft.VisualStudio.Shell.Interop.IAppxFileOpenPickerExtension" /> object that allows mutation of the manifest's File Open Picker extension.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.GetSearchExtension(System.String@,System.String@,System.String@,System.String@)">
+      <summary>Gets the Search extension.</summary>
+      <returns>true if there is a Search extension associated with the manifest.</returns>
+      <param name="executable">[out] The executable field of the app manifest.</param>
+      <param name="entryPoint">[out] The entryPoint field of the app manifest.</param>
+      <param name="runtimeType">[out] The runtimeType field of the app manifest.</param>
+      <param name="startPage">[out] The startPage field of the app manifest.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.GetShareExtension(System.String@,System.String@,System.String@,System.String@,Microsoft.VisualStudio.Shell.Interop.IAppxShareExtension@)">
+      <summary>Gets the Share extension.</summary>
+      <returns>true if there is a Share extension associated with the manifest.</returns>
+      <param name="executable">[out] The executable field of the App manifest.</param>
+      <param name="entryPoint">[out] The entryPoint field of the app manifest.</param>
+      <param name="runtimeType">[out] ] The runtimeType field of the app manifest.</param>
+      <param name="startPage">[out] The startPage field of the app manifest.</param>
+      <param name="shareExtensionData">[out] An <see cref="T:Microsoft.VisualStudio.Shell.Interop.IAppxShareExtension" /> object that allows mutation of the manifest's File Open Picker extension.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.HasCapability(System.String)">
+      <summary>Detects if the specified capability is currently declared in the manifest.</summary>
+      <returns>true if the given capability is currently declared in the manifest.</returns>
+      <param name="capabilityId">[in] The identifier of the capability.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.MapCapabilitySid(System.String,System.String@,System.String@)">
+      <summary>Produces a capability identifier and a localized name from the specified capability security identifier (SID), such as "S-1-15-3-1" or "S-1-15-3-BFA794E4-F964-4FDB-90F6-51056BFE4B44".</summary>
+      <param name="sid">[in] The capability security identifier.</param>
+      <param name="capabilityId">[out] The capability identifier.</param>
+      <param name="localizedCapabilityName">[out] The localized capability name.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.OSMaxVersionTested">
+      <summary>Gets or sets the highest operating system tested, for example 6.3.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.OSMinVersion">
+      <summary>Gets or sets the minimum operating system supported (such as 6.3).</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.PackageVersion">
+      <summary>Gets or sets the package version.</summary>
+      <returns>Returns <see cref="T:System.String" />.</returns>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.RemoveCapability(System.String)">
+      <summary>Removes the specified capability from the manifest if it is currently present.</summary>
+      <param name="capabilityId">[in] The identifier of the capability to be removed.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.RemoveFileOpenPickerExtension">
+      <summary>Removes the File Open Picker extension.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.RemoveSearchExtension">
+      <summary>Removes the Search extension.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.RemoveShareExtension">
+      <summary>Removes the share extension.</summary>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.SetFileOpenPickerExtension(System.String,System.String,System.String,System.String)">
+      <summary>Sets the File Open Picker extension.</summary>
+      <returns>The File Open Picker extension object that provides access to additional data elements in the manifest.</returns>
+      <param name="executable">[in] The executable field of the app manifest. This parameter is optional.</param>
+      <param name="entryPoint">[in] The entryPoint field of the app manifest. This parameter is optional.</param>
+      <param name="runtimeType">[in] The runtimeType field of the app manifest. This parameter is optional.</param>
+      <param name="startPage">[in] The startPage field of the app manifest. This parameter is optional.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.SetSearchExtension(System.String,System.String,System.String,System.String)">
+      <summary>Sets the Search extension.</summary>
+      <param name="executable">[in] The executable field of the app manifest. This parameter is optional.</param>
+      <param name="entryPoint">[in] The entryPoint field of the app manifest. This parameter is optional.</param>
+      <param name="runtimeType">[in] The runtimeType field of the app manifest. This parameter is optional.</param>
+      <param name="startPage">[in] The startPage field of the app manifest. This parameter is optional.</param>
+    </member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.SetShareExtension(System.String,System.String,System.String,System.String)">
+      <summary>Sets the Share extension.</summary>
+      <returns>The Share extension object that provides access to additional data elements in the manifest.</returns>
+      <param name="executable">[in] The executable field of the app manifest. This parameter is optional.</param>
+      <param name="entryPoint">[in] The entryPoint field of the app manifest. This parameter is optional.</param>
+      <param name="runtimeType">[in] The runtimeType field of the app manifest. This parameter is optional.</param>
+      <param name="startPage">[in] The startPage field of the app manifest. This parameter is optional.</param>
+    </member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IAppxManifestDocument2.StandardCapabilities">
+      <summary>Gets the fixed list of standard capabilities.</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapper"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapper.AdviseAppContainerBootstrapperEvents(Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapper.StartBootstrapAsync(System.String,System.String,Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperCallback)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapper.StartBootstrapForDebuggingAsync(System.String,System.String,System.String,Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperCallback)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapper.UnadviseAppContainerBootstrapperEvents(System.UInt32)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperCallback"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperCallback.OnBootstrapEnd(Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperCallback.OutputMessage(System.String)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents.OnBootstrapEnd(System.String,System.String,Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents.OnBootstrapForDebuggingEnd(System.String,System.String,System.String,Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents.OnBootstrapForDebuggingStart(System.String,System.String,System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents.OnBootstrapStart(System.String,System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents.QueryBootstrapForDebuggingStart(System.String,System.String,System.String,System.Boolean@,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperEvents.QueryBootstrapStart(System.String,System.String,System.Boolean@,System.String@)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperOperation"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperOperation.Cancel(System.Boolean)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult.Address"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsAppContainerBootstrapperResult.Succeeded"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.AcquireBuildResources(Microsoft.VisualStudio.Shell.Interop.VSBUILDMANAGERRESOURCE,System.UInt32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.BeginDesignTimeBuild"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.ClaimUIThreadForBuild"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.DesignTimeBuildAvailable"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.EndDesignTimeBuild"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.Escape(System.String,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.GetCurrentBatchBuildId(System.UInt32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.GetSolutionConfiguration(System.Object,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.RegisterLogger(System.Int32,System.Object)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.ReleaseBuildResources(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.ReleaseUIThreadForBuild"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.SolutionBuildAvailable"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.UIThreadIsAvailableForBuild"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.Unescape(System.String,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsBuildManagerAccessor3.UnregisterLoggers(System.Int32)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReference"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReference.AlreadyReferenced"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReference.FullPath"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReference.InstanceIdentity"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReference.Name"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReference.ProviderIdentity"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.AddReference(Microsoft.VisualStudio.Shell.Interop.IVsReference)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.CreateReference"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.ProjectCapabilities"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.ProviderGuid"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.ReferenceFilterPaths"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.References"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.TargetFrameworkMoniker"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.TargetPlatformIdentifier"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.TargetPlatformVersion"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceInstanceReferenceProviderContext.VisualStudioVersion"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceProperties"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceProperties.Collection"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceProperties.GetProperty(System.String)"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceProperties.ServiceIdentity"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceProperties.SetProperty(System.String,System.String)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsFileBackup2"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsFileBackup2.BackupFileAsync(System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsFileBackup2.HasChangedSinceLastBackup"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsOutputWindowPaneNoPump"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsOutputWindowPaneNoPump.OutputStringNoPump(System.String)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsPackageLoadEvents"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsPackageLoadEvents.OnPackageLoaded(System.Guid@,Microsoft.VisualStudio.Shell.Interop.IVsPackage)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices.Add(System.String,System.UInt32,System.String[],System.String[])"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices.Count"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices.GetConnectedService(System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices.GetConnectedServices(System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsConnectedServiceProperties[])"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices.Project"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsPersistConnectedServices.Remove(System.String)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsProjectMRU"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsProjectMRU.RegisterProjectMRU(System.String,System.String,System.String,System.String,System.Guid@)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange.CurrentTargetId"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange.NewTargetId"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange.ReloadProjectOnSuccess"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange.UnloadOnCancel"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange.UnloadOnFailure"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription.DisplayName"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription.GetProperty(System.UInt32)"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription.Order"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription.Supported"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription.TargetId"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsPropertiesInfo"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsPropertiesInfo.IsTransmittable(System.Int32)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProject"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProject.CheckForRetarget(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProject.GetAffectedFilesList(Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProject.Retarget(Microsoft.VisualStudio.Shell.Interop.IVsOutputWindowPane,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange,System.String)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProjectAsync"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProjectAsync.CheckForRetargetAsync(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProjectAsync.GetAffectedFilesListAsync(Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRetargetProjectAsync.RetargetAsync(Microsoft.VisualStudio.Shell.Interop.IVsOutputWindowPane,System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange,System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.GetRelatedSaveTreeItems(System.UInt32,System.UInt32,System.UInt32,Microsoft.VisualStudio.Shell.Interop.VSSAVETREEITEM[])"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.IsDocumentDirty(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.IsDocumentReadOnly(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.NotifyDocumentChangedEx(System.UInt32,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.UpdateDirtyState(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsRunningDocumentTable4.UpdateReadOnlyState(System.UInt32)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsShell6"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsShell6.AdvisePackageLoadEvents(Microsoft.VisualStudio.Shell.Interop.IVsPackageLoadEvents)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsShell6.CreatePackageExtension(System.Guid@,System.Guid@,System.Guid@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsShell6.LoadPackageWithContext(System.Guid@,System.Int32,System.Guid@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsShell6.NotifyExtensionSettingsChanged"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsShell6.UnadvisePackageLoadEvents(System.UInt32)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.AdviseTrackBatchRetargetingEvents(Microsoft.VisualStudio.Shell.Interop.IVsTrackBatchRetargetingEvents,System.UInt32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.AdviseTrackProjectRetargetingEvents(Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargetingEvents,System.UInt32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.BatchRetargetProject(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.String,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.BeginRetargetingBatch"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.BeginRetargetingBatchEx(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.CheckForProjectRetarget(System.UInt32,Microsoft.VisualStudio.Shell.Interop.IVsHierarchy)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.CheckSolutionForRetarget(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.EndRetargetingBatch"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.GetProjectTarget(System.Guid,Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.OnSetTargetFramework(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,System.String,System.String,Microsoft.VisualStudio.Shell.Interop.IVsSetTargetFrameworkWorkerCallback,System.Boolean)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.PromptForProjectRetarget(Microsoft.VisualStudio.Shell.Interop.IVsHierarchy,Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetChange,System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.RegisterProjectTarget(Microsoft.VisualStudio.Shell.Interop.IVsProjectTargetDescription)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.UnadviseTrackBatchRetargetingEvents(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.UnadviseTrackProjectRetargetingEvents(System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsTrackProjectRetargeting2.UnregisterProjectTarget(System.Guid)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchyNativeWindow"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchyNativeWindow.SetTreeRedraw(System.Boolean)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.CreateThemedImageList(System.IntPtr,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.EnumKeyBindingScopes"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.GetKeyBindingScope(System.Guid@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.GetOpenFileNameViaDlgEx2(Microsoft.VisualStudio.Shell.Interop.VSOPENFILENAMEW[],System.String,System.String)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.GetThemedColor(System.Guid@,System.String,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.SetFixedThemeColors(System.IntPtr)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.ThemeDIBits(System.UInt32,System.Byte@,System.UInt32,System.UInt32,System.Boolean,System.UInt32)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShell6.ThemeWindow(System.IntPtr)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsUIShellArrangeWindows"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShellArrangeWindows.Arrange(Microsoft.VisualStudio.Shell.Interop.VSArrangeWindowInfo[],System.Int32,Microsoft.VisualStudio.OLE.Interop.SIZE)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShellArrangeWindows.ComputeWindowSizeChange(System.IntPtr,Microsoft.VisualStudio.Shell.Interop.WINDOWPOS[])"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsUIShellOpenDocument4"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShellOpenDocument4.IsDocumentInAProject2(System.String,System.Boolean,Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy@,System.UInt32@,Microsoft.VisualStudio.OLE.Interop.IServiceProvider@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsUIShellOpenDocument4.OpenDocumentViaProject2(System.String,System.Guid@,System.Boolean,Microsoft.VisualStudio.OLE.Interop.IServiceProvider@,Microsoft.VisualStudio.Shell.Interop.IVsUIHierarchy@,System.UInt32@)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame4"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsWindowFrame4.GetWindowScreenRect(System.Int32@,System.Int32@,System.Int32@,System.Int32@)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetAssociatedCapabilities"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetCompletionListText(System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetCompletionListTextAt(System.Int32,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetDeprecation"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetExceptionCount(System.Int32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetExceptionTextAt(System.Int32,System.String@,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetFilterPriority(System.Int32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetParamCount(System.Int32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetParamTextAt(System.Int32,System.String@,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetPermissionSet(System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetRemarksText(System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetReturnsText(System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetSummaryText(System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetTypeParamCount(System.Int32@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.GetTypeParamTextAt(System.Int32,System.String@,System.String@)"></member>
+    <member name="M:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberData5.SetOptions(System.UInt32)"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberDataDeprecation"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberDataDeprecation.Description"></member>
+    <member name="P:Microsoft.VisualStudio.Shell.Interop.IVsXMLMemberDataDeprecation.Type"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.SVsProjectMRU"></member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.VSArrangeWindowInfo">
+      <summary>Specifies how a window is to be arranged.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.VSArrangeWindowInfo.flags">
+      <summary>Flags specifying the window arrangements. See <see cref="T:Microsoft.VisualStudio.Shell.Interop.__VSArrangeWindowFlags" />.</summary>
+    </member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.VSArrangeWindowInfo.hwnd">
+      <summary>Pointer to the window to be arranged (typically a dialog control).</summary>
+    </member>
+    <member name="T:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.cx"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.cy"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.flags"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.hwnd"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.hwndInsertAfter"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.x"></member>
+    <member name="F:Microsoft.VisualStudio.Shell.Interop.WINDOWPOS.y"></member>
+  </members>
+</doc>
