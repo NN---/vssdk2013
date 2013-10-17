@@ -539,6 +539,7 @@ namespace Script {
     struct DkmScriptDocumentFlags { enum e; };
     struct DkmScriptDocumentJmcState { enum e; };
     class DkmScriptDocumentTreeNode;
+    struct DkmScriptEmbeddedDocumentKind { enum e; };
     class DkmScriptInstructionAddress;
     class DkmScriptInstructionSymbol;
     class DkmScriptRuntimeInstance;
@@ -28020,7 +28021,7 @@ namespace Clr { namespace NativeCompilation {
         // Return value    : S_OK is returned on success, and failure codes are used for any
         // error.
         public: DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE GetAssemblyImageBytes(
-            _In_ UINT64 RVA,
+            _In_ UINT32 RVA,
             _In_ UINT32 BytesRequested,
             _Out_ DkmArray<BYTE>* pImageBytes
             );
@@ -29384,6 +29385,22 @@ namespace Script {
             );
     }; // end of DkmScriptDocumentTreeNode
 
+    // Indicates the kind of embedded document (or none if not an embedded document). The
+    // type can be eval code, function code, or script block.
+    //
+    // This API was introduced in Visual Studio 12 RTM (DkmApiVersion.VS12RTM).
+    enum DkmScriptEmbeddedDocumentKind::e
+    {
+        // This is not an embedded script document.
+        None = 0,
+        // Document is eval code.
+        EvalCode = 1,
+        // Document is function code.
+        FunctionCode = 2,
+        // Document is a script block.
+        ScriptBlock = 3
+    };
+
     // The source project system item for a script document.
     class DECLSPEC_NOVTABLE DECLSPEC_UUID("554a3b31-dbb1-1b82-b0a4-8854519691c7") DkmScriptSourceProjectItem : public IUnknown
     {
@@ -29482,6 +29499,10 @@ namespace Script {
             // Indicates the content type of the underlying script document.
             const Script::DkmScriptDocumentContentType::e ContentType;
 
+            // Indicates the kind of embedded document (or none if not an embedded document).
+            // The type can be eval code, function code, or script block.
+            const Script::DkmScriptEmbeddedDocumentKind::e EmbeddedDocumentKind;
+
             // The Just-My-Code state of the document. To update the value of this variable,
             // call DkmScriptDocument.SetJmcState.
             Script::DkmScriptDocumentJmcState::e JmcState;
@@ -29520,6 +29541,13 @@ namespace Script {
         //
         // This API was introduced in Visual Studio 12 RTM (DkmApiVersion.VS12RTM).
         public: DECLSPEC_NOTHROW Script::DkmScriptDocumentContentType::e STDMETHODCALLTYPE ContentType(
+            );
+
+        // Indicates the kind of embedded document (or none if not an embedded document). The
+        // type can be eval code, function code, or script block.
+        //
+        // This API was introduced in Visual Studio 12 RTM (DkmApiVersion.VS12RTM).
+        public: DECLSPEC_NOTHROW Script::DkmScriptEmbeddedDocumentKind::e STDMETHODCALLTYPE EmbeddedDocumentKind(
             );
 
         // [Optional] The project item which matches this document.
@@ -29584,6 +29612,8 @@ namespace Script {
         // Flags           : [In] Flag properties of a script document.
         // ContentType     : [In] Indicates the content type of the underlying script
         // document.
+        // EmbeddedDocumentKind: [In] Indicates the kind of embedded document (or none if not
+        // an embedded document). The type can be eval code, function code, or script block.
         // pSourceProjectItem: [In,Optional] The project item which matches this document.
         // JmcState        : [In] The Just-My-Code state of the document. To update the value
         // of this variable, call DkmScriptDocument.SetJmcState.
@@ -29601,6 +29631,7 @@ namespace Script {
             _In_opt_ DkmString* pFilePath,
             _In_ Script::DkmScriptDocumentFlags::e Flags,
             _In_ Script::DkmScriptDocumentContentType::e ContentType,
+            _In_ Script::DkmScriptEmbeddedDocumentKind::e EmbeddedDocumentKind,
             _In_opt_ Script::DkmScriptSourceProjectItem* pSourceProjectItem,
             _In_ Script::DkmScriptDocumentJmcState::e JmcState,
             _In_ const DkmDataItem& DataItem,
@@ -31814,13 +31845,19 @@ namespace ParallelTasks {
         // The task ID.
         UINT32 Id;
 
+        // The ID of this tasks parent.
+        UINT32 ParentId;
+
+        // [Optional] String representing the AsyncState property of the task.
+        OPTIONAL DkmString* pAsyncState;
+
+        // The state flags stored in the task object.
+        UINT32 StateFlags;
+
         // Release all reference-counted fields within the DkmManagedTaskInfo structure.
         static DECLSPEC_NOTHROW void STDMETHODCALLTYPE Release(
             _In_ DkmManagedTaskInfo* pItem
-            )
-        {
-            // structure requires no cleanup
-        }
+            );
     };
 
     // Represents either a managed TPL task or a native Concurrency Runtime task.
@@ -40863,6 +40900,20 @@ namespace ComponentInterfaces
             _In_ UINT32 ArgumentIndex,
             _Out_ DkmArray<ParallelTasks::DkmManagedTaskInfo>* pTaskInfoArray
             ) = 0;
+
+        // Get a DkmManagedTaskInfo from an ICorDebugHandleValue.
+        // pClrRuntimeInstance: [In] Represents a CLR instance running in a target process.
+        // pTaskHandle     : [In] The ICorDebugHandleValue for the task.
+        // pAppDomain      : [In] The AppDomain of the task.
+        // pTaskInfo       : [Out] The DkmManagedTaskInfo for the task.
+        // Return value    : S_OK is returned on success, and failure codes are used for any
+        // error.
+        virtual HRESULT STDMETHODCALLTYPE GetTaskInfoFromHandle(
+            _In_ Clr::DkmClrRuntimeInstance* pClrRuntimeInstance,
+            _In_ ICorDebugHandleValue* pTaskHandle,
+            _In_ Clr::DkmClrAppDomain* pAppDomain,
+            _Out_ ParallelTasks::DkmManagedTaskInfo* pTaskInfo
+            ) = 0;
     };
 
     // Exposes properties of a managed thread such as Managed Thread ID.
@@ -44107,10 +44158,12 @@ template <> inline DkmCollectionElementDescriptor::DkmCollectionElementDescripto
 template <> inline DECLSPEC_NOTHROW void STDMETHODCALLTYPE DkmReleaseElement(Clr::DkmManagedObjectReferenceInfo& element)
 { /* no cleanup is necessary */ }
 template <> inline DkmCollectionElementDescriptor::DkmCollectionElementDescriptor(const ParallelTasks::DkmManagedTaskInfo*) :
-    DisposeKind(NoDispose), Size(sizeof(ParallelTasks::DkmManagedTaskInfo)), Id(GUID_NULL)
+    DisposeKind(StructureDispose), Size(sizeof(ParallelTasks::DkmManagedTaskInfo)), Id(__uuidof(ParallelTasks::DkmManagedTaskInfo))
 {}
 template <> inline DECLSPEC_NOTHROW void STDMETHODCALLTYPE DkmReleaseElement(ParallelTasks::DkmManagedTaskInfo& element)
-{ /* no cleanup is necessary */ }
+{
+    return ParallelTasks::DkmManagedTaskInfo::Release(&element);
+}
 template <> inline DkmCollectionElementDescriptor::DkmCollectionElementDescriptor(const Clr::DkmManagedTypeId*) :
     DisposeKind(NoDispose), Size(sizeof(Clr::DkmManagedTypeId)), Id(GUID_NULL)
 {}
@@ -44135,6 +44188,11 @@ template <> inline DkmCollectionElementDescriptor::DkmCollectionElementDescripto
     DisposeKind(NoDispose), Size(sizeof(Script::DkmScriptDocumentJmcState::e)), Id(GUID_NULL)
 {}
 template <> inline DECLSPEC_NOTHROW void STDMETHODCALLTYPE DkmReleaseElement(Script::DkmScriptDocumentJmcState::e& element)
+{ /* no cleanup is necessary */ }
+template <> inline DkmCollectionElementDescriptor::DkmCollectionElementDescriptor(const Script::DkmScriptEmbeddedDocumentKind::e*) :
+    DisposeKind(NoDispose), Size(sizeof(Script::DkmScriptEmbeddedDocumentKind::e)), Id(GUID_NULL)
+{}
+template <> inline DECLSPEC_NOTHROW void STDMETHODCALLTYPE DkmReleaseElement(Script::DkmScriptEmbeddedDocumentKind::e& element)
 { /* no cleanup is necessary */ }
 template <> inline DkmCollectionElementDescriptor::DkmCollectionElementDescriptor(const CallStack::DkmStackWalkOperation::e*) :
     DisposeKind(NoDispose), Size(sizeof(CallStack::DkmStackWalkOperation::e)), Id(GUID_NULL)
@@ -45538,7 +45596,7 @@ extern "C" __declspec(dllimport) DECLSPEC_NOTHROW int STDMETHODCALLTYPE Proc3DE1
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc50B5D8DA1C11FB7B3B25AF5A65A55FB0(Microsoft::VisualStudio::Debugger::DkmString*, const Microsoft::VisualStudio::Debugger::Symbols::DkmTextSpan&, Microsoft::VisualStudio::Debugger::Script::DkmScriptBlockMappingInfo**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE GetC5849E9833F5F36297EB088EC664A234(Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument*, Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcEA0F13D8EBAAD5C57D07D7CA0ADFBE54(Microsoft::VisualStudio::Debugger::DkmRuntimeInstance*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentTreeNode*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::Symbols::DkmModule*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentFlags::e, Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem*, const Microsoft::VisualStudio::Debugger::DkmDataItem&, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument**);
-extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcA673B7F58C93640EC322B5C0A2E63F79(Microsoft::VisualStudio::Debugger::DkmRuntimeInstance*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentTreeNode*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::Symbols::DkmModule*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentFlags::e, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentContentType::e, Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentJmcState::e, const Microsoft::VisualStudio::Debugger::DkmDataItem&, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument**);
+extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcA673B7F58C93640EC322B5C0A2E63F79(Microsoft::VisualStudio::Debugger::DkmRuntimeInstance*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentTreeNode*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::Symbols::DkmModule*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::DkmString*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentFlags::e, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentContentType::e, Microsoft::VisualStudio::Debugger::Script::DkmScriptEmbeddedDocumentKind::e, Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem*, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentJmcState::e, const Microsoft::VisualStudio::Debugger::DkmDataItem&, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc605D280FE9838181FA3A4A2B68F0F82B(Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument*, bool, Microsoft::VisualStudio::Debugger::DkmString**, Microsoft::VisualStudio::Debugger::DkmArray<UINT32>*);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcB907C0A7AFABDB032781F0EB78062FA2(Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument*, bool);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc3070F6337FAFE9328B926573E08C6350(Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument*, Microsoft::VisualStudio::Debugger::Symbols::DkmSourceFileId*, Microsoft::VisualStudio::Debugger::Symbols::DkmResolvedDocument**);
@@ -45743,7 +45801,7 @@ extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcAB099C958E2B4BDC4A6A8969DF728294(Microsoft::VisualStudio::Debugger::Clr::DkmClrCaughtExceptionInformation*);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc75FF43FC6B24BBA9BCB13405C170E6F2(Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance*, UINT32, Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcModuleInstance**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc07F31C87616869864CBF6033F37DAAB9(Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance*, Microsoft::VisualStudio::Debugger::DkmArray<Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcModuleInstance*>*);
-extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcD535CEE9B7C2831AB2793C7873F721C8(Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance*, UINT64, UINT32, Microsoft::VisualStudio::Debugger::DkmArray<BYTE>*);
+extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcD535CEE9B7C2831AB2793C7873F721C8(Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance*, UINT32, UINT32, Microsoft::VisualStudio::Debugger::DkmArray<BYTE>*);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcB9BAA2DA346F0AF91423145A3413CA27(Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance*, Microsoft::VisualStudio::Debugger::DkmReadOnlyCollection<BYTE>*, Microsoft::VisualStudio::Debugger::DkmArray<Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcInstanceFieldSymbol*>*, UINT32*);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc0CF9D0EC7EF8995BD39E312B58463B27(Microsoft::VisualStudio::Debugger::DkmString*, UINT32, UINT32, Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcInstanceFieldSymbol**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc9B089C79F9336B6ABA00EF766311F77F(const Microsoft::VisualStudio::Debugger::Clr::DkmClrMethodId&, UINT32, UINT32, Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcRuntimeInstance*, Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcModuleInstance*, Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance*, Microsoft::VisualStudio::Debugger::DkmReadOnlyCollection<BYTE>*, const Microsoft::VisualStudio::Debugger::DkmInstructionAddress::CPUInstruction*, Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcInstructionAddress**);
@@ -45783,6 +45841,7 @@ extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc978E4E1F1C2A124CCD52C37CE7B3FE2F(Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueContext*, Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueInfo**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcD87D1398C6DB7E1C5819A7AEF3065005(ICorDebugType*, UINT32, UINT32, UINT64, Microsoft::VisualStudio::Debugger::DkmReadOnlyCollection<BYTE>*, Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueCopy**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE ProcD5CA6002328EC4403BAE43C674FC3C77(ICorDebugType*, ICorDebugValue*, Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueReference**);
+extern "C" __declspec(dllimport) DECLSPEC_NOTHROW void STDMETHODCALLTYPE Proc1E701FEAF4CA56487DDB8AD758EC4739(Microsoft::VisualStudio::Debugger::ParallelTasks::DkmManagedTaskInfo*);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc8D47D19688BAF506460B4626D5B8D8EF(Microsoft::VisualStudio::Debugger::DkmInstructionAddress*, Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueContext*, Microsoft::VisualStudio::Debugger::Evaluation::DkmRawManagedReturnValue**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc4BD013B67BCF30535C934FEC828B0D2F(Microsoft::VisualStudio::Debugger::DkmString*, UINT32, Microsoft::VisualStudio::Debugger::DkmRegistryTweak**);
 extern "C" __declspec(dllimport) DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Proc096C4143603B1A366F404656A77DF808(Microsoft::VisualStudio::Debugger::Evaluation::DkmInspectionSession*, Microsoft::VisualStudio::Debugger::DkmThread*, Microsoft::VisualStudio::Debugger::CallStack::DkmCallStackFilterOptions::e, const Microsoft::VisualStudio::Debugger::CallStack::DkmFrameFormatOptions&, Microsoft::VisualStudio::Debugger::DkmReadOnlyCollection<BYTE>*, Microsoft::VisualStudio::Debugger::CallStack::DkmAsyncStackWalkContext*, Microsoft::VisualStudio::Debugger::CallStack::DkmStackWalkOperation::e, Microsoft::VisualStudio::Debugger::DkmReadOnlyCollection<Microsoft::VisualStudio::Debugger::DkmInstructionAddress*>*, const Microsoft::VisualStudio::Debugger::DkmDataItem&, Microsoft::VisualStudio::Debugger::CallStack::DkmStackTraceContext**);
@@ -51703,6 +51762,15 @@ inline DECLSPEC_NOTHROW Microsoft::VisualStudio::Debugger::Script::DkmScriptDocu
     return this->m__pExtendedData->ContentType;
 }
 
+inline DECLSPEC_NOTHROW Microsoft::VisualStudio::Debugger::Script::DkmScriptEmbeddedDocumentKind::e STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument::EmbeddedDocumentKind()
+{
+    // This method was introduced after the initial version of the API. The caller is
+    // responsible for taking steps to ensure that this method is not called when running
+    // against earlier versions of vsdebugeng.dll.
+    ATLASSERT(DkmComponentManager::IsApiVersionSupported(DkmApiVersion::VS12RTM) || !"Invalid usage detected. Process will crash or bogus data will be returned");
+    return this->m__pExtendedData->EmbeddedDocumentKind;
+}
+
 inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument::GetSourceProjectItem(_Deref_out_opt_ Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem** ppValue)
 {
     return GetC5849E9833F5F36297EB088EC664A234(this, ppValue);
@@ -51722,9 +51790,9 @@ inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debug
     return ProcEA0F13D8EBAAD5C57D07D7CA0ADFBE54(pRuntimeInstance, pParent, pTitle, pModule, pUrl, pFilePath, Flags, pSourceProjectItem, DataItem, ppCreatedObject);
 }
 
-inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument::Create(Microsoft::VisualStudio::Debugger::DkmRuntimeInstance* pRuntimeInstance, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentTreeNode* pParent, Microsoft::VisualStudio::Debugger::DkmString* pTitle, Microsoft::VisualStudio::Debugger::Symbols::DkmModule* pModule, Microsoft::VisualStudio::Debugger::DkmString* pUrl, Microsoft::VisualStudio::Debugger::DkmString* pFilePath, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentFlags::e Flags, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentContentType::e ContentType, Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem* pSourceProjectItem, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentJmcState::e JmcState, const Microsoft::VisualStudio::Debugger::DkmDataItem& DataItem, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument** ppCreatedObject)
+inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument::Create(Microsoft::VisualStudio::Debugger::DkmRuntimeInstance* pRuntimeInstance, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentTreeNode* pParent, Microsoft::VisualStudio::Debugger::DkmString* pTitle, Microsoft::VisualStudio::Debugger::Symbols::DkmModule* pModule, Microsoft::VisualStudio::Debugger::DkmString* pUrl, Microsoft::VisualStudio::Debugger::DkmString* pFilePath, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentFlags::e Flags, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentContentType::e ContentType, Microsoft::VisualStudio::Debugger::Script::DkmScriptEmbeddedDocumentKind::e EmbeddedDocumentKind, Microsoft::VisualStudio::Debugger::Script::DkmScriptSourceProjectItem* pSourceProjectItem, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocumentJmcState::e JmcState, const Microsoft::VisualStudio::Debugger::DkmDataItem& DataItem, Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument** ppCreatedObject)
 {
-    return ProcA673B7F58C93640EC322B5C0A2E63F79(pRuntimeInstance, pParent, pTitle, pModule, pUrl, pFilePath, Flags, ContentType, pSourceProjectItem, JmcState, DataItem, ppCreatedObject);
+    return ProcA673B7F58C93640EC322B5C0A2E63F79(pRuntimeInstance, pParent, pTitle, pModule, pUrl, pFilePath, Flags, ContentType, EmbeddedDocumentKind, pSourceProjectItem, JmcState, DataItem, ppCreatedObject);
 }
 
 inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Script::DkmScriptDocument::GetContent(bool EnableContentEvents, Microsoft::VisualStudio::Debugger::DkmString** ppContent, Microsoft::VisualStudio::Debugger::DkmArray<UINT32>* pSectionDividers)
@@ -53918,7 +53986,7 @@ inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debug
     return Proc07F31C87616869864CBF6033F37DAAB9(this, pEmbeddedModules);
 }
 
-inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance::GetAssemblyImageBytes(UINT64 RVA, UINT32 BytesRequested, Microsoft::VisualStudio::Debugger::DkmArray<BYTE>* pImageBytes)
+inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Clr::NativeCompilation::DkmClrNcContainerModuleInstance::GetAssemblyImageBytes(UINT32 RVA, UINT32 BytesRequested, Microsoft::VisualStudio::Debugger::DkmArray<BYTE>* pImageBytes)
 {
     return ProcD535CEE9B7C2831AB2793C7873F721C8(this, RVA, BytesRequested, pImageBytes);
 }
@@ -54383,6 +54451,11 @@ _Ret_opt_ inline DECLSPEC_NOTHROW ICorDebugValue* STDMETHODCALLTYPE Microsoft::V
 inline DECLSPEC_NOTHROW HRESULT STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueReference::Create(ICorDebugType* pCorType, ICorDebugValue* pCorValue, Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueReference** ppCreatedObject)
 {
     return ProcD5CA6002328EC4403BAE43C674FC3C77(pCorType, pCorValue, ppCreatedObject);
+}
+
+inline DECLSPEC_NOTHROW void STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::ParallelTasks::DkmManagedTaskInfo::Release(Microsoft::VisualStudio::Debugger::ParallelTasks::DkmManagedTaskInfo* pItem)
+{
+    return Proc1E701FEAF4CA56487DDB8AD758EC4739(pItem);
 }
 
 _Ret_ inline DECLSPEC_NOTHROW Microsoft::VisualStudio::Debugger::Clr::DkmManagedReturnValueContext* STDMETHODCALLTYPE Microsoft::VisualStudio::Debugger::Evaluation::DkmRawManagedReturnValue::Context()

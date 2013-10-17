@@ -82,7 +82,6 @@
 #define cmdidRazorThreadWindowToolbarShowFlaggedOnly    0x0000034B
 #define cmdidRazorThreadWindowToolbarShowCurProcOnly    0x0000034C
 #define cmdidRazorDisassemblyWindowToolbarAddressCombo  0x00000360
-#define cmdidShowApplicationThumbnailWindow				0x00000361
 #define cmdidLaunchManagedMemoryAnalysis                0x00000600
 
 // Bitmaps

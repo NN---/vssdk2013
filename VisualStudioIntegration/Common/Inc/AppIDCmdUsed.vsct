@@ -1173,6 +1173,9 @@
       <UsedCommand Condition="!Defined(No_AddReferenceProjectOnlyCommand)" guid="guidVSStd12" id="cmdidAddReferenceProjectOnly" />
       <UsedCommand Condition="!Defined(No_AddWebReferenceProjectOnlyCommand)" guid="guidVSStd12" id="cmdidAddWebReferenceProjectOnly" />
       <UsedCommand Condition="!Defined(No_AddServiceReferenceProjectOnlyCommand)" guid="guidVSStd12" id="cmdidAddServiceReferenceProjectOnly" />
+      <UsedCommand Condition="!Defined(No_AddReferenceNonProjectOnlyCommand)" guid="guidVSStd12" id="cmdidAddReferenceNonProjectOnly" />
+      <UsedCommand Condition="!Defined(No_AddWebReferenceNonProjectOnlyCommand)" guid="guidVSStd12" id="cmdidAddWebReferenceNonProjectOnly" />
+      <UsedCommand Condition="!Defined(No_AddServiceReferenceNonProjectOnlyCommand)" guid="guidVSStd12" id="cmdidAddServiceReferenceNonProjectOnly" />
       <UsedCommands Condition="!Defined(No_UnloadProjectCommands)">
         <UsedCommand Condition="!Defined(No_EditProjectFileCommand)" guid="guidVSStd2K" id="cmdidEditProjectFile"/>
         <UsedCommand Condition="!Defined(No_ReloadProjectCommand)" guid="guidVSStd97" id="cmdidReloadProject"/>

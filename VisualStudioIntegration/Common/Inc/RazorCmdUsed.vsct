@@ -49,7 +49,6 @@
       <UsedCommand guid="guidRazorCmdSet" id="cmdidAddExpression"/>
       <UsedCommand guid="guidRazorCmdSet" id="cmdidRemoveExpression"/>
     </UsedCommands>
-    <UsedCommand Condition="!defined(No_ApplicationThumbnailWindow)" guid="guidRazorCmdSet" id="cmdidShowApplicationThumbnailWindow" />
   </UsedCommands>
   <!-- CMDUSED_END -->
 </CommandTable>

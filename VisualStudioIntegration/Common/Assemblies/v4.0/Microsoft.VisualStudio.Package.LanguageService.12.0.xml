@@ -88,7 +88,12 @@
       <param name="textSoFar">[in] A string containing the text typed by the user and to be matched.</param>
       <param name="index">[in] The index of the item to compare against.</param>
     </member>
-    <member name="M:Microsoft.VisualStudio.Package.Declarations.IsPerfectMatch(System.String,System.Int32)"></member>
+    <member name="M:Microsoft.VisualStudio.Package.Declarations.IsPerfectMatch(System.String,System.Int32)">
+      <summary>Determines whether the specified text matches all of the specified item.</summary>
+      <returns>Returns true if the specified text is at the beginning of the specified item; otherwise, returns false.</returns>
+      <param name="textSoFar">[in] A string containing the text typed by the user and to be matched.</param>
+      <param name="index">[in] The index of the item to compare against.</param>
+    </member>
     <member name="P:Microsoft.VisualStudio.Package.Declarations.LastBestMatch">
       <summary>Gets or sets the name of the item that best matches what has been typed so far.</summary>
       <returns>If a best match has been set, returns a string containing the name of the item; otherwise, returns an empty string.</returns>
@@ -506,6 +511,7 @@
     </member>
     <member name="M:Microsoft.VisualStudio.Package.Source.GetPairExtents(Microsoft.VisualStudio.TextManager.Interop.IVsTextView,System.Int32,System.Int32,Microsoft.VisualStudio.TextManager.Interop.TextSpan@,Microsoft.VisualStudio.TextManager.Interop.TextSpan@)">
       <summary>Gets the text spans for a matching pair (or triplet) of language elements.</summary>
+      <returns>true if the pair was found, otherwise false.</returns>
       <param name="textView">The <see cref="T:Microsoft.VisualStudio.TextManager.Interop.IVsTextView" /> that contains the text that contains the matching language elements.</param>
       <param name="line">The line number.</param>
       <param name="col">The column number.</param>
@@ -683,7 +689,10 @@
       <param name="mgr">An <see cref="T:Microsoft.VisualStudio.Package.EditArray" /> object that contains the source to be reformatted.</param>
       <param name="span">A <see cref="T:Microsoft.VisualStudio.TextManager.Interop.TextSpan" /> object describing the range of lines to be reformatted.</param>
     </member>
-    <member name="M:Microsoft.VisualStudio.Package.Source.RegisterTextBufferEventHandlers(Microsoft.VisualStudio.TextManager.Interop.IVsTextLines)"></member>
+    <member name="M:Microsoft.VisualStudio.Package.Source.RegisterTextBufferEventHandlers(Microsoft.VisualStudio.TextManager.Interop.IVsTextLines)">
+      <summary>Registers event handlers for the given text.</summary>
+      <param name="textLines">The text.</param>
+    </member>
     <member name="M:Microsoft.VisualStudio.Package.Source.RemoveHiddenRegions">
       <summary>Removes all hidden regions from the current view.</summary>
     </member>

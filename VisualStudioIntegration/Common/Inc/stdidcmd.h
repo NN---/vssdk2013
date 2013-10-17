@@ -2782,6 +2782,9 @@ enum
 #define cmdidAddReferenceProjectOnly            10
 #define cmdidAddWebReferenceProjectOnly         11
 #define cmdidAddServiceReferenceProjectOnly     12
+#define cmdidAddReferenceNonProjectOnly         13
+#define cmdidAddWebReferenceNonProjectOnly      14
+#define cmdidAddServiceReferenceNonProjectOnly  15
 
 // Do not change the NavigateTo values (they were set to match when switching from a private to public release to prevent breaks)
 #define cmdidNavigateTo	                    256

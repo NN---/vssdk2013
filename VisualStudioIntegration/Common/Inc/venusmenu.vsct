@@ -498,13 +498,13 @@ at http://vscore/sdk/Documents/Specifications/8.0/VSCTDocumentation.doc
         <CommandPlacement guid="guidVSStd2K" id="ECMD_PUBLISHSELECTION" priority="0x0300">
             <Parent guid="guidVenusCmdId" id="IDG_CTX_BUILD"/>
         </CommandPlacement>
-        <CommandPlacement guid="guidVSStd2K" id="ECMD_ADDREFERENCECTX" priority="0x0100">
+        <CommandPlacement guid="CMDSETID_StandardCommandSet12" id="cmdidAddReferenceNonProjectOnly" priority="0x0100">
             <Parent guid="guidVenusCmdId" id="IDG_CTX_REFERENCE"/>
         </CommandPlacement>
-        <CommandPlacement guid="guidVSStd2K" id="ECMD_ADDWEBREFERENCECTX" priority="0x0200">
+        <CommandPlacement guid="CMDSETID_StandardCommandSet12" id="cmdidAddWebReferenceNonProjectOnly" priority="0x0200">
             <Parent guid="guidVenusCmdId" id="IDG_CTX_REFERENCE"/>
         </CommandPlacement>
-        <CommandPlacement guid="guidVSStd2K" id="ECMD_ADDSERVICEREFERENCECTX" priority="0x0280">
+        <CommandPlacement guid="CMDSETID_StandardCommandSet12" id="cmdidAddServiceReferenceNonProjectOnly" priority="0x0280">
           <Parent guid="guidVenusCmdId" id="IDG_CTX_REFERENCE"/>
         </CommandPlacement>
         <CommandPlacement guid="guidVSStd2K" id="cmdidViewInClassDiagram" priority="0x0500">

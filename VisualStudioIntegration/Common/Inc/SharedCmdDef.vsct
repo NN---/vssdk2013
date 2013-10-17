@@ -5992,6 +5992,47 @@
           <CommandName>Add Service Reference</CommandName>
         </Strings>
       </Button>
+      <Button guid="CMDSETID_StandardCommandSet12" id="cmdidAddReferenceNonProjectOnly" priority="0x0000" type="Button">
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>TextMenuUseButton</CommandFlag>
+        <CommandFlag>TextContextUseButton</CommandFlag>
+        <CommandFlag>TextChangesButton</CommandFlag>
+        <CommandFlag>TextChanges</CommandFlag>
+        <Strings>
+          <ButtonText>Add &amp;Reference...</ButtonText>
+          <MenuText>&amp;Reference...</MenuText>
+          <ToolTipText>Add Reference</ToolTipText>
+          <CommandName>Add Reference</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="CMDSETID_StandardCommandSet12" id="cmdidAddWebReferenceNonProjectOnly" priority="0x0000" type="Button">
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>TextMenuUseButton</CommandFlag>
+        <CommandFlag>TextContextUseButton</CommandFlag>
+        <Strings>
+          <ButtonText>Add W&amp;eb Reference...</ButtonText>
+          <MenuText>W&amp;eb Reference...</MenuText>
+          <ToolTipText>Add Web Reference</ToolTipText>
+          <CommandName>Add Web Reference</CommandName>
+        </Strings>
+      </Button>
+      <Button guid="CMDSETID_StandardCommandSet12" id="cmdidAddServiceReferenceNonProjectOnly" priority="0x0000" type="Button">
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <CommandFlag>DefaultInvisible</CommandFlag>
+        <CommandFlag>DefaultDisabled</CommandFlag>
+        <CommandFlag>TextMenuUseButton</CommandFlag>
+        <CommandFlag>TextContextUseButton</CommandFlag>
+        <Strings>
+          <ButtonText>Add &amp;Service Reference...</ButtonText>
+          <MenuText>&amp;Service Reference...</MenuText>
+          <ToolTipText>Add Service Reference</ToolTipText>
+          <CommandName>Add Service Reference</CommandName>
+        </Strings>
+      </Button>
       <Button guid="guidVSStd2K" id="ECMD_SETRUNTIMEVERSION" priority="0x0000" type="Button">
         <CommandFlag>DynamicVisibility</CommandFlag>
         <CommandFlag>DefaultInvisible</CommandFlag>

@@ -272,7 +272,9 @@ enum __VSHPROPID6
         VSHPROPID_ScriptJmcProjectControl	= -2137,
         VSHPROPID_NuGetPackageProjectTypeContext	= -2138,
         VSHPROPID_RequiresLegacyManagedDebugEngine	= -2139,
-        VSHPROPID_FIRST6	= -2139
+        VSHPROPID_CurrentTargetId	= -2140,
+        VSHPROPID_NewTargetId	= -2141,
+        VSHPROPID_FIRST6	= -2141
     } ;
 typedef /* [public] */ DWORD VSHPROPID6;
 
@@ -293,7 +295,9 @@ typedef DWORD VSTASKCREATIONOPTIONS2;
 
 enum __VSDBGLAUNCHFLAGS120
     {
-        DBGLAUNCH_ALLOW_EVENTS_AFTER_STOPPED	= 0x80000
+        DBGLAUNCH_ALLOW_EVENTS_AFTER_STOPPED	= 0x80000,
+        DBGLAUNCH_FORCE_32BIT_DEBUG	= 0x100000,
+        DBGLAUNCH_FORCE_64BIT_DEBUG	= 0x200000
     } ;
 typedef DWORD VSDBGLAUNCHFLAGS120;
 
@@ -2996,7 +3000,7 @@ EXTERN_C const IID IID_IVsLongIdleManager;
     {
     public:
         virtual HRESULT STDMETHODCALLTYPE AdviseLongIdleEvents( 
-            /* [in] */ DWORD dwIdleTime,
+            /* [in] */ DWORD dwIdleTimeInSeconds,
             /* [in] */ __RPC__in_opt IVsLongIdleEvents *eventSink,
             /* [retval][out] */ __RPC__out VSCOOKIE *pCookie) = 0;
         
@@ -3026,7 +3030,7 @@ EXTERN_C const IID IID_IVsLongIdleManager;
         
         HRESULT ( STDMETHODCALLTYPE *AdviseLongIdleEvents )( 
             __RPC__in IVsLongIdleManager * This,
-            /* [in] */ DWORD dwIdleTime,
+            /* [in] */ DWORD dwIdleTimeInSeconds,
             /* [in] */ __RPC__in_opt IVsLongIdleEvents *eventSink,
             /* [retval][out] */ __RPC__out VSCOOKIE *pCookie);
         
@@ -3057,8 +3061,8 @@ EXTERN_C const IID IID_IVsLongIdleManager;
     ( (This)->lpVtbl -> Release(This) ) 
 
 
-#define IVsLongIdleManager_AdviseLongIdleEvents(This,dwIdleTime,eventSink,pCookie)	\
-    ( (This)->lpVtbl -> AdviseLongIdleEvents(This,dwIdleTime,eventSink,pCookie) ) 
+#define IVsLongIdleManager_AdviseLongIdleEvents(This,dwIdleTimeInSeconds,eventSink,pCookie)	\
+    ( (This)->lpVtbl -> AdviseLongIdleEvents(This,dwIdleTimeInSeconds,eventSink,pCookie) ) 
 
 #define IVsLongIdleManager_UnadviseLongIdleEvents(This,cookie)	\
     ( (This)->lpVtbl -> UnadviseLongIdleEvents(This,cookie) ) 
@@ -3564,6 +3568,15 @@ EXTERN_C const IID IID_IVsScriptJmcProjectControl;
             /* [in] */ __RPC__in LPCWSTR sourceUrl,
             /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType) = 0;
         
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_EvalDefaultCodeType( 
+            /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_FunctionDefaultCodeType( 
+            /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType) = 0;
+        
+        virtual /* [propget] */ HRESULT STDMETHODCALLTYPE get_ScriptBlockDefaultCodeType( 
+            /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType) = 0;
+        
     };
     
     
@@ -3588,6 +3601,18 @@ EXTERN_C const IID IID_IVsScriptJmcProjectControl;
         HRESULT ( STDMETHODCALLTYPE *GetUserCodeSourceType )( 
             __RPC__in IVsScriptJmcProjectControl * This,
             /* [in] */ __RPC__in LPCWSTR sourceUrl,
+            /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType);
+        
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_EvalDefaultCodeType )( 
+            __RPC__in IVsScriptJmcProjectControl * This,
+            /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType);
+        
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_FunctionDefaultCodeType )( 
+            __RPC__in IVsScriptJmcProjectControl * This,
+            /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType);
+        
+        /* [propget] */ HRESULT ( STDMETHODCALLTYPE *get_ScriptBlockDefaultCodeType )( 
+            __RPC__in IVsScriptJmcProjectControl * This,
             /* [retval][out] */ __RPC__out VsScriptJmcCodeType *pVsScriptJmcCodeType);
         
         END_INTERFACE
@@ -3615,6 +3640,15 @@ EXTERN_C const IID IID_IVsScriptJmcProjectControl;
 
 #define IVsScriptJmcProjectControl_GetUserCodeSourceType(This,sourceUrl,pVsScriptJmcCodeType)	\
     ( (This)->lpVtbl -> GetUserCodeSourceType(This,sourceUrl,pVsScriptJmcCodeType) ) 
+
+#define IVsScriptJmcProjectControl_get_EvalDefaultCodeType(This,pVsScriptJmcCodeType)	\
+    ( (This)->lpVtbl -> get_EvalDefaultCodeType(This,pVsScriptJmcCodeType) ) 
+
+#define IVsScriptJmcProjectControl_get_FunctionDefaultCodeType(This,pVsScriptJmcCodeType)	\
+    ( (This)->lpVtbl -> get_FunctionDefaultCodeType(This,pVsScriptJmcCodeType) ) 
+
+#define IVsScriptJmcProjectControl_get_ScriptBlockDefaultCodeType(This,pVsScriptJmcCodeType)	\
+    ( (This)->lpVtbl -> get_ScriptBlockDefaultCodeType(This,pVsScriptJmcCodeType) ) 
 
 #endif /* COBJMACROS */
 
